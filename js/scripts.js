@@ -15,10 +15,22 @@ var divide = function(number1, number2) {
 }
 
 var count = function(number1, number2) {
-  for (index = number1; index <= number2; index += number1) { // count by number1 to number2
-    alert(index);
+
+  if (!number1 || !number2) {
+    alert("fill out both input fields with numbers")
+  } else if (number2*number2 < number1*number1) {
+    alert("number 2 must be greater than number 1")
+  }else if (number1 < 0 && number2 > 0 || number1 > 0 && number2 < 0) {
+    alert("counting by number1 will never reach number 2")
+  } else if (number1 === 0 || number2 === 0) {
+    alert("cannot count by or too zero")
+  } else {
+    for (var index = number1; (index*index) <= (number2*number2); index += number1) { // count by number1 too number2
+      alert(index);
+    }
   }
 }
+
 
 $(document).ready(function() {
   $("form#add").submit(function(event) {
@@ -55,5 +67,6 @@ $(document).ready(function() {
     var number2 = parseInt($("#count2").val());
     var result = count(number1, number2);
     $("#output").text(result);
+
   });
 });
