@@ -14,6 +14,12 @@ var divide = function(number1, number2) {
   return number1 / number2;
 }
 
+var count = function(number1, number2) {
+  for (index = number1; index <= number2; index += number1) { // count by number1 to number2
+    alert(index);
+  }
+}
+
 $(document).ready(function() {
   $("form#add").submit(function(event) {
     event.preventDefault();
@@ -41,6 +47,13 @@ $(document).ready(function() {
     var number1 = parseInt($("#div1").val());
     var number2 = parseInt($("#div2").val());
     var result = divide(number1, number2);
+    $("#output").text(result);
+  });
+  $("form#count").submit(function(event) {
+    event.preventDefault();
+    var number1 = parseInt($("#count1").val());
+    var number2 = parseInt($("#count2").val());
+    var result = count(number1, number2);
     $("#output").text(result);
   });
 });
